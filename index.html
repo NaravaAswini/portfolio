@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Narava Aswini | Software Engineer & GenAI Specialist</title>
+  <meta name="description" content="Portfolio of Narava Aswini - Software Engineer specializing in Generative AI, LLMs, Python, FastAPI, and Full-Stack Web Development. MCA at GVPCE (CGPA: 8.55).">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Tailwind Config -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              400: '#2dd4bf',
+              500: '#14b8a6',
+              600: '#0d9488',
+            },
+            accent: {
+              cyan: '#06b6d4',
+              indigo: '#6366f1',
+              violet: '#8b5cf6',
+              emerald: '#10b981',
+            }
+          },
+          animation: {
+            'float-slow': 'float 6s ease-in-out infinite',
+            'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+            pulseGlow: {
+              '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
+              '50%': { opacity: '0.8', transform: 'scale(1.05)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#0b0f19] text-slate-100 font-sans selection:bg-teal-500 selection:text-white relative overflow-x-hidden">
+
+  <!-- Interactive Background Canvas (Neural / Tech Particles) -->
+  <canvas id="neuralCanvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
+
+  <!-- Ambient Glow Gradients -->
+  <div class="fixed top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-cyan-600/15 blur-[120px] pointer-events-none -z-10"></div>
+  <div class="fixed bottom-[10%] right-[-10%] w-[600px] h-[600px] rounded-full bg-indigo-600/15 blur-[140px] pointer-events-none -z-10"></div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- Navigation Bar -->
+  <header class="fixed top-0 left-0 right-0 z-40 backdrop-blur-md bg-[#0b0f19]/80 border-b border-slate-800/80 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Logo / Brand -->
+      <a href="#hero" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center font-mono font-bold text-lg text-white shadow-lg shadow-cyan-500/25 group-hover:scale-105 transition-transform">
+          NA
+        </div>
+        <div class="flex flex-col">
+          <span class="font-bold text-lg text-white tracking-tight group-hover:text-cyan-400 transition-colors">Narava Aswini</span>
+          <span class="text-xs text-slate-400 font-mono flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            Software Engineer &bull; GenAI
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-1 bg-slate-900/60 p-1.5 rounded-full border border-slate-800">
+        <a href="#about" class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 rounded-full transition-all">About</a>
+        <a href="#skills" class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 rounded-full transition-all">Skills</a>
+        <a href="#projects" class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 rounded-full transition-all">Projects</a>
+        <a href="#playground" class="px-4 py-2 text-sm font-medium text-cyan-400 hover:text-cyan-300 hover:bg-cyan-950/40 rounded-full transition-all flex items-center gap-1.5">
+          <i class="fa-solid fa-wand-magic-sparkles text-xs"></i> AI Lab
+        </a>
+        <a href="#experience" class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 rounded-full transition-all">Experience</a>
+        <a href="#certifications" class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 rounded-full transition-all">Certifications</a>
+        <a href="#contact" class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 rounded-full transition-all">Contact</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="hidden lg:flex items-center gap-3">
+        <a href="resume.html" target="_blank" class="px-4 py-2 rounded-xl text-sm font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 hover:border-cyan-500/50 flex items-center gap-2 transition-all shadow-sm">
+          <i class="fa-regular fa-file-pdf text-red-400"></i> View Resume
+        </a>
+        <a href="#contact" class="px-4 py-2 rounded-xl text-sm font-semibold bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-all flex items-center gap-2">
+          <span>Let's Connect</span>
+          <i class="fa-solid fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="mobileMenuBtn" aria-label="Toggle Navigation" class="md:hidden p-2.5 rounded-xl bg-slate-800/90 text-slate-300 hover:text-white border border-slate-700">
+        <i class="fa-solid fa-bars text-lg"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobileMenu" class="hidden md:hidden border-b border-slate-800 bg-[#0b0f19]/95 backdrop-blur-xl px-6 py-6 space-y-3">
+      <a href="#about" class="block py-2 text-slate-300 hover:text-cyan-400 font-medium mobile-link">About</a>
+      <a href="#skills" class="block py-2 text-slate-300 hover:text-cyan-400 font-medium mobile-link">Skills</a>
+      <a href="#projects" class="block py-2 text-slate-300 hover:text-cyan-400 font-medium mobile-link">Projects</a>
+      <a href="#playground" class="block py-2 text-cyan-400 font-medium mobile-link flex items-center gap-2">
+        <i class="fa-solid fa-wand-magic-sparkles"></i> AI Lab Playground
+      </a>
+      <a href="#experience" class="block py-2 text-slate-300 hover:text-cyan-400 font-medium mobile-link">Experience</a>
+      <a href="#certifications" class="block py-2 text-slate-300 hover:text-cyan-400 font-medium mobile-link">Certifications</a>
+      <a href="#contact" class="block py-2 text-slate-300 hover:text-cyan-400 font-medium mobile-link">Contact</a>
+      <div class="pt-4 border-t border-slate-800 flex flex-col gap-2">
+        <a href="resume.html" target="_blank" class="w-full py-2.5 text-center rounded-xl bg-slate-800 text-slate-200 border border-slate-700 font-semibold text-sm">
+          <i class="fa-regular fa-file-pdf text-red-400 mr-2"></i> View Resume
+        </a>
+        <a href="#contact" class="w-full py-2.5 text-center rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 text-white font-semibold text-sm mobile-link">
+          Get in Touch
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10 pt-24">
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-[calc(100vh-6rem)] flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-5xl mx-auto text-center flex flex-col items-center">
+        <!-- Status Pill -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900/90 border border-cyan-500/30 text-cyan-300 text-xs sm:text-sm font-medium mb-6 shadow-lg shadow-cyan-950/30 animate-float-slow">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>Open to Software Engineering & GenAI Roles</span>
+          <span class="text-slate-500">&bull;</span>
+          <span class="text-slate-400">2026 MCA Grad (CGPA: 8.55)</span>
+        </div>
+
+        <!-- Name & Dynamic Title -->
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+          Hi, I'm <span class="bg-gradient-to-r from-cyan-400 via-teal-300 to-indigo-400 bg-clip-text text-transparent">Narava Aswini</span>
+        </h1>
+
+        <div class="h-10 sm:h-12 mb-6 flex items-center justify-center font-mono text-lg sm:text-2xl text-slate-300">
+          <span class="text-slate-500 mr-2">&gt;</span>
+          <span id="typedRole" class="text-cyan-400 font-semibold border-r-2 border-cyan-400 pr-1 animate-pulse"></span>
+        </div>
+
+        <p class="max-w-3xl text-slate-400 text-base sm:text-lg leading-relaxed mb-10">
+          MCA graduate from <span class="text-slate-200 font-medium">GVPCE (A)</span> with proven hands-on experience engineering end-to-end intelligent systems. Specializing in <span class="text-cyan-300 font-medium">Generative AI, LLM Integration, RAG</span>, and scalable full-stack applications with <span class="text-indigo-300 font-medium">Python, FastAPI, Flask, React.js</span>, and modern Cloud infrastructure.
+        </p>
+
+        <!-- CTA Action Buttons -->
+        <div class="flex flex-wrap items-center justify-center gap-4 mb-14">
+          <a href="#projects" class="px-7 py-3.5 rounded-xl font-semibold text-white bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 shadow-xl shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:-translate-y-0.5 transition-all flex items-center gap-2">
+            <i class="fa-solid fa-code"></i>
+            <span>View Featured Projects</span>
+          </a>
+          <a href="#playground" class="px-7 py-3.5 rounded-xl font-semibold text-slate-200 bg-slate-900/90 hover:bg-slate-800 border border-slate-700 hover:border-cyan-500/50 hover:-translate-y-0.5 transition-all flex items-center gap-2">
+            <i class="fa-solid fa-flask-vial text-cyan-400"></i>
+            <span>Try AI Demos</span>
+          </a>
+          <a href="resume.html" target="_blank" class="px-5 py-3.5 rounded-xl font-semibold text-slate-300 hover:text-white bg-slate-800/60 hover:bg-slate-800 border border-slate-700/80 hover:-translate-y-0.5 transition-all flex items-center gap-2" title="Download & View Full Resume">
+            <i class="fa-solid fa-arrow-down-to-bracket"></i>
+            <span>Resume</span>
+          </a>
+        </div>
+
+        <!-- Social Proof & Direct Channels -->
+        <div class="flex items-center gap-4 text-slate-400">
+          <a href="https://github.com/NaravaAswini" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-xl bg-slate-900 border border-slate-800 hover:border-cyan-500/50 hover:text-cyan-400 flex items-center justify-center text-lg transition-all" title="GitHub: NaravaAswini">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="https://linkedin.com/in/aswininarava003" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-xl bg-slate-900 border border-slate-800 hover:border-cyan-500/50 hover:text-cyan-400 flex items-center justify-center text-lg transition-all" title="LinkedIn: aswininarava003">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="mailto:aswininarava@gmail.com" class="w-11 h-11 rounded-xl bg-slate-900 border border-slate-800 hover:border-cyan-500/50 hover:text-cyan-400 flex items-center justify-center text-lg transition-all" title="Email: aswininarava@gmail.com">
+            <i class="fa-solid fa-envelope"></i>
+          </a>
+          <button onclick="copyToClipboard('+91 8106059184', 'Phone number copied to clipboard!')" class="w-11 h-11 rounded-xl bg-slate-900 border border-slate-800 hover:border-cyan-500/50 hover:text-cyan-400 flex items-center justify-center text-lg transition-all" title="Copy Phone Number (+91 8106059184)">
+            <i class="fa-solid fa-phone"></i>
+          </button>
+        </div>
+
+        <!-- Metric Cards Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 w-full mt-16 pt-8 border-t border-slate-800/80">
+          <div class="bg-slate-900/40 backdrop-blur border border-slate-800/80 p-5 rounded-2xl text-left hover:border-slate-700 transition-all">
+            <div class="text-3xl font-extrabold text-cyan-400 mb-1">8.55</div>
+            <div class="text-xs uppercase tracking-wider text-slate-400 font-semibold">MCA CGPA</div>
+            <div class="text-xs text-slate-500 mt-1">GVPCE (A), Vizag</div>
+          </div>
+          <div class="bg-slate-900/40 backdrop-blur border border-slate-800/80 p-5 rounded-2xl text-left hover:border-slate-700 transition-all">
+            <div class="text-3xl font-extrabold text-indigo-400 mb-1">3+</div>
+            <div class="text-xs uppercase tracking-wider text-slate-400 font-semibold">End-to-End Projects</div>
+            <div class="text-xs text-slate-500 mt-1">GenAI & Full Stack</div>
+          </div>
+          <div class="bg-slate-900/40 backdrop-blur border border-slate-800/80 p-5 rounded-2xl text-left hover:border-slate-700 transition-all">
+            <div class="text-3xl font-extrabold text-teal-400 mb-1">3</div>
+            <div class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Certifications</div>
+            <div class="text-xs text-slate-500 mt-1">Oracle GenAI & Azure</div>
+          </div>
+          <div class="bg-slate-900/40 backdrop-blur border border-slate-800/80 p-5 rounded-2xl text-left hover:border-slate-700 transition-all">
+            <div class="text-3xl font-extrabold text-purple-400 mb-1">100%</div>
+            <div class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Production Mindset</div>
+            <div class="text-xs text-slate-500 mt-1">Clean Code & APIs</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Me & Education Section -->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-800/60">
+      <div class="max-w-7xl mx-auto">
+        <!-- Section Header -->
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 text-cyan-400 font-mono text-sm tracking-wider uppercase mb-2">
+            <i class="fa-solid fa-user-astronaut"></i> Background & Vision
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Engineering Intelligence & Scalability</h2>
+          <div class="w-16 h-1 bg-gradient-to-r from-cyan-500 to-indigo-500 mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <!-- Bio Column -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="bg-slate-900/50 backdrop-blur border border-slate-800 rounded-3xl p-6 sm:p-8 hover:border-slate-700 transition-all">
+              <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-terminal text-cyan-400 text-base"></i> Professional Summary
+              </h3>
+              <p class="text-slate-300 leading-relaxed text-base mb-4">
+                I am an MCA graduate with hands-on expertise spanning <strong class="text-cyan-300">Python, Generative AI, Large Language Models (LLMs), RAG architectures</strong>, and modern full-stack web applications.
+              </p>
+              <p class="text-slate-300 leading-relaxed text-base mb-4">
+                My core strength lies in translating complex AI research models (such as <span class="text-indigo-300 font-mono text-sm">DeepSeek-Coder</span>, <span class="text-indigo-300 font-mono text-sm">StarCoder2</span>, and <span class="text-indigo-300 font-mono text-sm">Qwen2.5</span>) into high-performance, real-world web tools using <strong class="text-white">FastAPI, Flask, and React.js</strong>.
+              </p>
+              <p class="text-slate-400 leading-relaxed text-sm">
+                From building ATS resume intelligence engines to automated static code AST parsers with generative remediation, I focus on scalable software architecture, clean RESTful APIs, and responsive, human-centric interfaces.
+              </p>
+
+              <!-- Quick Highlights Badges -->
+              <div class="mt-6 pt-6 border-t border-slate-800/80 flex flex-wrap gap-2">
+                <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-cyan-950/50 text-cyan-300 border border-cyan-800/40">
+                  <i class="fa-solid fa-brain mr-1"></i> LLM & RAG Systems
+                </span>
+                <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-indigo-950/50 text-indigo-300 border border-indigo-800/40">
+                  <i class="fa-solid fa-server mr-1"></i> FastAPI & REST APIs
+                </span>
+                <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-teal-950/50 text-teal-300 border border-teal-800/40">
+                  <i class="fa-brands fa-react mr-1"></i> React & Modern Frontend
+                </span>
+                <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800 text-slate-300 border border-slate-700">
+                  <i class="fa-solid fa-cloud mr-1"></i> Microsoft Azure
+                </span>
+              </div>
+            </div>
+
+            <!-- Soft & Analytical Strengths -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="bg-slate-900/40 border border-slate-800/80 p-5 rounded-2xl flex items-start gap-3">
+                <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center shrink-0">
+                  <i class="fa-solid fa-lightbulb"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-sm">Problem-Solving & AST</h4>
+                  <p class="text-slate-400 text-xs mt-1">Deep analysis of logic, syntax, and algorithmic optimization through AST trees and TF-IDF metrics.</p>
+                </div>
+              </div>
+              <div class="bg-slate-900/40 border border-slate-800/80 p-5 rounded-2xl flex items-start gap-3">
+                <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center shrink-0">
+                  <i class="fa-solid fa-bolt"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-sm">Rapid Tech Adaptation</h4>
+                  <p class="text-slate-400 text-xs mt-1">Swiftly mastering emerging AI agent frameworks, Antigravity, Claude Code, and cloud paradigms.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Education & Credentials Column -->
+          <div class="lg:col-span-5 space-y-6">
+            <div class="bg-slate-900/50 backdrop-blur border border-slate-800 rounded-3xl p-6 sm:p-8 hover:border-slate-700 transition-all">
+              <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                <i class="fa-solid fa-graduation-cap text-cyan-400"></i> Education Timeline
+              </h3>
+
+              <div class="relative pl-6 space-y-8 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-800">
+                <!-- MCA -->
+                <div class="relative">
+                  <div class="absolute -left-[29px] top-1.5 w-4 h-4 rounded-full bg-cyan-500 border-4 border-[#0b0f19]"></div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-mono px-2.5 py-1 rounded bg-cyan-950/70 text-cyan-300 border border-cyan-800/40">2024 – 2026</span>
+                    <span class="text-xs font-bold text-emerald-400 bg-emerald-950/50 px-2 py-0.5 rounded border border-emerald-800/40">CGPA: 8.55</span>
+                  </div>
+                  <h4 class="text-base font-bold text-white mt-2">MCA (Master of Computer Applications)</h4>
+                  <p class="text-sm text-cyan-300 font-medium">GVPCE (A) - Gayatri Vidya Parishad College of Engineering</p>
+                  <p class="text-xs text-slate-400 mt-1">Visakhapatnam, Andhra Pradesh</p>
+                  <p class="text-xs text-slate-400 mt-2">Specializing in Advanced Software Engineering, Cloud Computing, and Artificial Intelligence.</p>
+                </div>
+
+                <!-- B.Sc -->
+                <div class="relative">
+                  <div class="absolute -left-[29px] top-1.5 w-4 h-4 rounded-full bg-indigo-500 border-4 border-[#0b0f19]"></div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-mono px-2.5 py-1 rounded bg-indigo-950/70 text-indigo-300 border border-indigo-800/40">2021 – 2024</span>
+                    <span class="text-xs font-bold text-emerald-400 bg-emerald-950/50 px-2 py-0.5 rounded border border-emerald-800/40">CGPA: 8.04</span>
+                  </div>
+                  <h4 class="text-base font-bold text-white mt-2">B.Sc. (Computer Science)</h4>
+                  <p class="text-sm text-indigo-300 font-medium">Silver Jubilee Govt. College (Autonomous)</p>
+                  <p class="text-xs text-slate-400 mt-1">Kurnool, Andhra Pradesh</p>
+                  <p class="text-xs text-slate-400 mt-2">Core foundation in Data Structures, Relational Database Management Systems, Java, and C++.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Contact Mini-Card -->
+            <div class="bg-gradient-to-r from-cyan-950/40 to-indigo-950/40 border border-cyan-500/20 rounded-2xl p-5 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div>
+                  <div class="text-xs text-slate-400">Current Base</div>
+                  <div class="text-sm font-semibold text-white">Andhra Pradesh, India (Open to Relocation)</div>
+                </div>
+              </div>
+              <a href="#contact" class="text-cyan-400 hover:text-cyan-300 text-sm font-medium">
+                Hire <i class="fa-solid fa-arrow-right text-xs ml-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Skills Matrix Section -->
+    <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-950/40">
+      <div class="max-w-7xl mx-auto">
+        <!-- Section Header -->
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 text-cyan-400 font-mono text-sm tracking-wider uppercase mb-2">
+            <i class="fa-solid fa-microchip"></i> Capabilities & Arsenal
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Technical Skills & Expertise</h2>
+          <p class="text-slate-400 text-sm mt-3">From generative AI model integration to full-stack microservices</p>
+          <div class="w-16 h-1 bg-gradient-to-r from-cyan-500 to-indigo-500 mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap items-center justify-center gap-2 mb-10" id="skillFilterTabs">
+          <button class="skill-tab active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-cyan-500 text-white shadow-md shadow-cyan-500/20" data-filter="all">All Disciplines</button>
+          <button class="skill-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800" data-filter="ai">AI & LLMs</button>
+          <button class="skill-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800" data-filter="backend">Backend & Cloud</button>
+          <button class="skill-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800" data-filter="frontend">Frontend & UI</button>
+          <button class="skill-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800" data-filter="tools">Databases & Tools</button>
+        </div>
+
+        <!-- Skills Grid Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="skillsGrid">
+          
+          <!-- Card 1: AI & GenAI -->
+          <div class="skill-category-card bg-slate-900/60 border border-cyan-500/30 rounded-3xl p-6 relative overflow-hidden group hover:border-cyan-400/60 transition-all shadow-lg shadow-cyan-950/20" data-cat="ai">
+            <div class="absolute top-0 right-0 w-24 h-24 bg-cyan-500/10 rounded-bl-full pointer-events-none transition-transform group-hover:scale-125"></div>
+            <div class="w-12 h-12 rounded-2xl bg-cyan-500/15 text-cyan-400 flex items-center justify-center text-xl mb-5 border border-cyan-500/30">
+              <i class="fa-solid fa-brain"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Generative AI & LLMs</h3>
+            <p class="text-xs text-slate-400 mb-4">Autonomous intelligence, prompt architecture, and open-source models</p>
+            
+            <div class="space-y-2.5">
+              <div class="skill-item flex items-center justify-between text-xs p-2 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                <span class="font-medium text-slate-200">Generative AI (GenAI) & LLMs</span>
+                <span class="text-cyan-400 font-mono font-semibold">Specialist</span>
+              </div>
+              <div class="skill-item flex items-center justify-between text-xs p-2 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                <span class="font-medium text-slate-200">RAG (Retrieval Augmented Gen)</span>
+                <span class="text-cyan-400 font-mono font-semibold">Applied</span>
+              </div>
+              <div class="skill-item flex items-center justify-between text-xs p-2 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                <span class="font-medium text-slate-200">DeepSeek-Coder & StarCoder2</span>
+                <span class="text-cyan-400 font-mono font-semibold">Integrated</span>
+              </div>
+              <div class="skill-item flex items-center justify-between text-xs p-2 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                <span class="font-medium text-slate-200">Phi-4 Mini & Qwen2.5-Coder</span>
+                <span class="text-cyan-400 font-mono font-semibold">Integrated</span>
+              </div>
+              <div class="skill-item flex items-center justify-between text-xs p-2 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                <span class="font-medium text-slate-200">AI APIs & Prompt Engineering</span>
+                <span class="text-cyan-400 font-mono font-semibold">Advanced</span>
+              </div>
+              <div class="skill-item flex items-center justify-between text-xs p-2 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                <span class="font-medium text-slate-200">Antigravity & Claude Code</span>
+                <span class="text-cyan-400 font-mono font-semibold">Hands-on</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Programming & Backend -->
+          <div class="skill-category-card bg-slate-900/60 border border-indigo-500/30 rounded-3xl p-6 relative overflow-hidden group hover:border-indigo-400/60 transition-all shadow-lg shadow-indigo-950/20" data-cat="backend">
+            <div class="absolute top-0 right-0 w-24 h-24 bg-indigo-500/10 rounded-bl-full pointer-events-none transition-transform group-hover:scale-125"></div>
+            <div class="w-12 h-12 rounded-2xl bg-indigo-500/15 text-indigo-400 flex items-center justify-center text-xl mb-5 border border-indigo-500/30">
+              <i class="fa-solid fa-server"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Backend & APIs</h3>
+            <p class="text-xs text-slate-400 mb-4">Scalable microservices, asynchronous routing, and secure authentication</p>
+
+            <div class="space-y-2.5">
+              <div class="skill-item flex items-center justify-between text-xs p-2 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                <span class="font-medium text-slate-200">Python (Core, OOP, Async)</span>
+                <span class="text-indigo-400 font-mono font-semibold">Proficient</span>
+              </div>
+              <div class="skill-item flex items-center justify-between text-xs p-2 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                <span class="font-medium text-slate-200">FastAPI & Flask</span>
+                <span class="text-indigo-400 font-mono font-semibold">Production</span>
+              </div>
+              <div class="skill-item flex items-center justify-between text-xs p-2 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                <span class="font-medium text-slate-200">Node.js & Express.js</span>
+                <span class="text-indigo-400 font-mono font-semibold">Hands-on</span>
+              </div>
+              <div class="skill-item flex items-center justify-between text-xs p-2 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                <span class="font-medium text-slate-200">RESTful APIs & JWT Auth</span>
+                <span class="text-indigo-400 font-mono font-semibold">Robust</span>
+              </div>
+              <div class="skill-item flex items-center justify-between text-xs p-2 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                <span class="font-medium text-slate-200">Java (OOP, Fundamentals)</span>
+                <span class="text-indigo-400 font-mono font-semibold">Intermediate</span>
+              </div>
+              <div class="skill-item flex items-center justify-between text-xs p-2 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                <span class="font-medium text-slate-200">AST Parsing & Static Analysis</span>
+                <span class="text-indigo-400 font-mono font-semibold">Applied</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Frontend & UI -->
+          <div class="skill-category-card bg-slate-900/60 border border-teal-500/30 rounded-3xl p-6 relative overflow-hidden group hover:border-teal-400/60 transition-all shadow-lg shadow-teal-950/20" data-cat="frontend">
+            <div class="absolute top-0 right-0 w-24 h-24 bg-teal-500/10 rounded-bl-full pointer-events-none transition-transform group-hover:scale-125"></div>
+            <div class="w-12 h-12 rounded-2xl bg-teal-500/15 text-teal-400 flex items-center justify-center text-xl mb-5 border border-teal-500/30">
+              <i class="fa-brands fa-react"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Frontend & UI</h3>
+            <p class="text-xs text-slate-400 mb-4">Responsive, reactive, and data-driven client interfaces</p>
+
+            <div class="space-y-2.5">
+              <div class="skill-item flex items-center justify-between text-xs p-2 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                <span class="font-medium text-slate-200">React.js (Hooks, State)</span>
+                <span class="text-teal-400 font-mono font-semibold">Proficient</span>
+              </div>
+              <div class="skill-item flex items-center justify-between text-xs p-2 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                <span class="font-medium text-slate-200">JavaScript (ES6+)</span>
+                <span class="text-teal-400 font-mono font-semibold">Strong</span>
+              </div>
+              <div class="skill-item flex items-center justify-between text-xs p-2 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                <span class="font-medium text-slate-200">Tailwind CSS & Modern CSS</span>
+                <span class="text-teal-400 font-mono font-semibold">Pixel-Perfect</span>
+              </div>
+              <div class="skill-item flex items-center justify-between text-xs p-2 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                <span class="font-medium text-slate-200">Recharts Data Visualizations</span>
+                <span class="text-teal-400 font-mono font-semibold">Integrated</span>
+              </div>
+              <div class="skill-item flex items-center justify-between text-xs p-2 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                <span class="font-medium text-slate-200">HTML5, Semantic Web</span>
+                <span class="text-teal-400 font-mono font-semibold">Standard</span>
+              </div>
+              <div class="skill-item flex items-center justify-between text-xs p-2 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                <span class="font-medium text-slate-200">Responsive & Role-Based UI</span>
+                <span class="text-teal-400 font-mono font-semibold">Adaptive</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Databases, Cloud & Data Science -->
+          <div class="skill-category-card bg-slate-900/60 border border-purple-500/30 rounded-3xl p-6 relative overflow-hidden group hover:border-purple-400/60 transition-all shadow-lg shadow-purple-950/20" data-cat="tools">
+            <div class="absolute top-0 right-0 w-24 h-24 bg-purple-500/10 rounded-bl-full pointer-events-none transition-transform group-hover:scale-125"></div>
+            <div class="w-12 h-12 rounded-2xl bg-purple-500/15 text-purple-400 flex items-center justify-center text-xl mb-5 border border-purple-500/30">
+              <i class="fa-solid fa-cloud-arrow-up"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Cloud & Databases</h3>
+            <p class="text-xs text-slate-400 mb-4">Relational & NoSQL storage, Microsoft Azure, and data analysis</p>
+
+            <div class="space-y-2.5">
+              <div class="skill-item flex items-center justify-between text-xs p-2 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                <span class="font-medium text-slate-200">Microsoft Azure Cloud</span>
+                <span class="text-purple-400 font-mono font-semibold">Certified</span>
+              </div>
+              <div class="skill-item flex items-center justify-between text-xs p-2 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                <span class="font-medium text-slate-200">MongoDB (NoSQL)</span>
+                <span class="text-purple-400 font-mono font-semibold">Applied</span>
+              </div>
+              <div class="skill-item flex items-center justify-between text-xs p-2 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                <span class="font-medium text-slate-200">MySQL & SQLite & SQL</span>
+                <span class="text-purple-400 font-mono font-semibold">Solid</span>
+              </div>
+              <div class="skill-item flex items-center justify-between text-xs p-2 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                <span class="font-medium text-slate-200">NumPy & Pandas</span>
+                <span class="text-purple-400 font-mono font-semibold">Data Prep</span>
+              </div>
+              <div class="skill-item flex items-center justify-between text-xs p-2 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                <span class="font-medium text-slate-200">Git & GitHub Version Control</span>
+                <span class="text-purple-400 font-mono font-semibold">Proficient</span>
+              </div>
+              <div class="skill-item flex items-center justify-between text-xs p-2 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                <span class="font-medium text-slate-200">PyCharm, Jupyter, VS Code</span>
+                <span class="text-purple-400 font-mono font-semibold">Tooling</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Projects Showcase Section -->
+    <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-800/60">
+      <div class="max-w-7xl mx-auto">
+        <!-- Section Header -->
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 text-cyan-400 font-mono text-sm tracking-wider uppercase mb-2">
+            <i class="fa-solid fa-layer-group"></i> Flagship Engineering
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Featured Projects</h2>
+          <p class="text-slate-400 text-sm mt-3">High-impact solutions solving real enterprise & developer challenges</p>
+          <div class="w-16 h-1 bg-gradient-to-r from-cyan-500 to-indigo-500 mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <div class="space-y-12">
+
+          <!-- Project 1: ResumeIQ -->
+          <div class="bg-gradient-to-br from-slate-900/90 to-slate-900/40 border border-slate-800 hover:border-cyan-500/40 rounded-3xl p-6 sm:p-8 lg:p-10 transition-all shadow-xl hover:shadow-cyan-950/30">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div class="lg:col-span-7 space-y-4">
+                <div class="flex flex-wrap items-center gap-2.5">
+                  <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-cyan-950/80 text-cyan-300 border border-cyan-800/50">
+                    <i class="fa-solid fa-sparkles mr-1"></i> AI & NLP Matching
+                  </span>
+                  <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-indigo-950/80 text-indigo-300 border border-indigo-800/50">
+                    FastAPI + React
+                  </span>
+                  <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-emerald-950/80 text-emerald-300 border border-emerald-800/50">
+                    Score: 0–100 ATS
+                  </span>
+                </div>
+
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-white">
+                  ResumeIQ &ndash; AI Resume Analyzer & Job-Fit Scorer
+                </h3>
+
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                  Developed an end-to-end intelligent web platform using <strong class="text-cyan-300">React, FastAPI, SQLite, and REST APIs</strong> to systematically analyze resumes against complex job descriptions. Solves recruiter bottlenecks and candidate mismatch through mathematical NLP heuristics.
+                </p>
+
+                <!-- Project Bullets -->
+                <ul class="space-y-2 text-sm text-slate-300">
+                  <li class="flex items-start gap-2.5">
+                    <i class="fa-solid fa-circle-check text-cyan-400 text-sm mt-1 shrink-0"></i>
+                    <span><strong>Intelligent Parser & NLP Matcher:</strong> Implemented automated resume parsing, skill extraction, ATS compliance checks, and precise 0&ndash;100 job-fit scoring via <strong>TF-IDF vectorization and cosine similarity</strong>.</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <i class="fa-solid fa-circle-check text-cyan-400 text-sm mt-1 shrink-0"></i>
+                    <span><strong>Enterprise Recruiter Hub:</strong> Built secure JWT authentication, candidate screening filters, automated candidate ranking leaderboards, and instant downloadable PDF audit reports.</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <i class="fa-solid fa-circle-check text-cyan-400 text-sm mt-1 shrink-0"></i>
+                    <span><strong>Interactive Analytics UI:</strong> Crafted a responsive client interface with <strong>Tailwind CSS and Recharts</strong>, displaying live skill gap radar charts and role-based views.</span>
+                  </li>
+                </ul>
+
+                <!-- Tech Tags -->
+                <div class="flex flex-wrap gap-2 pt-2">
+                  <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-xs text-slate-300 font-mono">React.js</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-xs text-slate-300 font-mono">FastAPI</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-xs text-slate-300 font-mono">TF-IDF & Cosine Similarity</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-xs text-slate-300 font-mono">SQLite</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-xs text-slate-300 font-mono">JWT Auth</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-xs text-slate-300 font-mono">Recharts</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-xs text-slate-300 font-mono">PDF Generation</span>
+                </div>
+
+                <!-- Actions -->
+                <div class="flex items-center gap-4 pt-3">
+                  <a href="#playground" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-cyan-500 hover:bg-cyan-400 text-white shadow-md shadow-cyan-500/20 flex items-center gap-2 transition-all">
+                    <i class="fa-solid fa-play"></i> Try Simulator Below
+                  </a>
+                  <a href="https://github.com/NaravaAswini" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 flex items-center gap-2 transition-all">
+                    <i class="fa-brands fa-github"></i> View on GitHub
+                  </a>
+                </div>
+              </div>
+
+              <!-- Interactive Card Visual / Simulation Teaser -->
+              <div class="lg:col-span-5 bg-slate-950/80 border border-slate-800 rounded-2xl p-5 relative overflow-hidden">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-800 text-xs text-slate-400 font-mono">
+                  <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span> ResumeIQ Engine v2.4</span>
+                  <span class="text-cyan-400">Match 94.8%</span>
+                </div>
+                
+                <div class="py-4 space-y-3 font-mono text-xs">
+                  <div class="bg-slate-900/90 p-3 rounded-xl border border-slate-800">
+                    <div class="text-slate-400 text-[11px] mb-1">Target Role: AI / Full-Stack Engineer</div>
+                    <div class="flex items-center justify-between text-white font-semibold">
+                      <span>Cosine Similarity Vector</span>
+                      <span class="text-emerald-400">0.9482</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-2 rounded-full mt-2 overflow-hidden">
+                      <div class="bg-gradient-to-r from-teal-400 to-cyan-400 h-full rounded-full w-[95%]"></div>
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-2 gap-2 text-[11px]">
+                    <div class="bg-emerald-950/40 border border-emerald-800/40 p-2.5 rounded-xl">
+                      <div class="text-emerald-400 font-bold mb-1"><i class="fa-solid fa-check"></i> Matched Skills (14)</div>
+                      <div class="text-slate-300">FastAPI, Python, React, RAG, LLMs, Docker...</div>
+                    </div>
+                    <div class="bg-amber-950/40 border border-amber-800/40 p-2.5 rounded-xl">
+                      <div class="text-amber-400 font-bold mb-1"><i class="fa-solid fa-triangle-exclamation"></i> Skills Gap (1)</div>
+                      <div class="text-slate-300">Kubernetes (Recommended)</div>
+                    </div>
+                  </div>
+
+                  <div class="p-3 bg-cyan-950/30 border border-cyan-800/30 rounded-xl text-cyan-200 text-[11px]">
+                    <strong>Recruiter Recommendation:</strong> High-priority candidate for AI Systems & Full-Stack pipelines.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: Generative AI Code Review -->
+          <div class="bg-gradient-to-br from-slate-900/90 to-slate-900/40 border border-slate-800 hover:border-indigo-500/40 rounded-3xl p-6 sm:p-8 lg:p-10 transition-all shadow-xl hover:shadow-indigo-950/30">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div class="lg:col-span-7 space-y-4">
+                <div class="flex flex-wrap items-center gap-2.5">
+                  <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-indigo-950/80 text-indigo-300 border border-indigo-800/50">
+                    <i class="fa-solid fa-robot mr-1"></i> Multi-LLM Code Agent
+                  </span>
+                  <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-cyan-950/80 text-cyan-300 border border-cyan-800/50">
+                    Python + Flask + AST
+                  </span>
+                  <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-purple-950/80 text-purple-300 border border-purple-800/50">
+                    Auto-Patch Generation
+                  </span>
+                </div>
+
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-white">
+                  Generative AI Code Review &ndash; Automated Bug Fixing System
+                </h3>
+
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                  Architected an autonomous AI code reviewer using <strong class="text-indigo-300">Python, Flask, and Abstract Syntax Tree (AST) parsing</strong> to automatically detect programming bugs, syntax inconsistencies, and PEP-8 violations, followed by LLM-driven remediation.
+                </p>
+
+                <!-- Project Bullets -->
+                <ul class="space-y-2 text-sm text-slate-300">
+                  <li class="flex items-start gap-2.5">
+                    <i class="fa-solid fa-circle-check text-indigo-400 text-sm mt-1 shrink-0"></i>
+                    <span><strong>Static Code Analysis Engine:</strong> Implemented deep AST parsing in Python to traverse code syntax trees, isolating logical anti-patterns, unhandled exceptions, and dead code before execution.</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <i class="fa-solid fa-circle-check text-indigo-400 text-sm mt-1 shrink-0"></i>
+                    <span><strong>Multi-Model Coding LLMs:</strong> Integrated state-of-the-art open coding models including <strong>DeepSeek-Coder, StarCoder2, Phi-4 Mini, and Qwen2.5-Coder</strong> to benchmark and generate accurate diff patches.</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <i class="fa-solid fa-circle-check text-indigo-400 text-sm mt-1 shrink-0"></i>
+                    <span><strong>Bug Explanation & Remediation:</strong> Built automated plain-English bug breakdown and one-click code patch recommendations, accelerating developer debugging cycles significantly.</span>
+                  </li>
+                </ul>
+
+                <!-- Tech Tags -->
+                <div class="flex flex-wrap gap-2 pt-2">
+                  <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-xs text-slate-300 font-mono">Python</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-xs text-slate-300 font-mono">Flask</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-xs text-slate-300 font-mono">AST (Abstract Syntax Tree)</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-xs text-slate-300 font-mono">DeepSeek-Coder</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-xs text-slate-300 font-mono">StarCoder2</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-xs text-slate-300 font-mono">Phi-4 Mini</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-xs text-slate-300 font-mono">Qwen2.5-Coder</span>
+                </div>
+
+                <!-- Actions -->
+                <div class="flex items-center gap-4 pt-3">
+                  <a href="#playground" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-md shadow-indigo-600/20 flex items-center gap-2 transition-all">
+                    <i class="fa-solid fa-bug-slash"></i> Test Code Reviewer
+                  </a>
+                  <a href="https://github.com/NaravaAswini" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 flex items-center gap-2 transition-all">
+                    <i class="fa-brands fa-github"></i> View on GitHub
+                  </a>
+                </div>
+              </div>
+
+              <!-- Visual Code Diff Simulation -->
+              <div class="lg:col-span-5 bg-slate-950/80 border border-slate-800 rounded-2xl p-5 font-mono text-xs">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-800 text-slate-400">
+                  <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-indigo-400"></span> AST Review &bull; patch.diff</span>
+                  <span class="text-emerald-400">DeepSeek-Coder v2</span>
+                </div>
+                
+                <div class="mt-3 space-y-1.5 overflow-x-auto text-[11px]">
+                  <div class="text-slate-500">@@ -1,5 +1,6 @@ Bug: Unclosed File Descriptor</div>
+                  <div class="bg-red-950/40 text-red-300 px-2 py-1 rounded border-l-2 border-red-500">
+                    - f = open("dataset.csv")<br>
+                    - data = f.read()<br>
+                    - return parse(data)
+                  </div>
+                  <div class="bg-emerald-950/40 text-emerald-300 px-2 py-1 rounded border-l-2 border-emerald-500">
+                    + with open("dataset.csv", "r", encoding="utf-8") as f:<br>
+                    + &nbsp;&nbsp;&nbsp;&nbsp;data = f.read()<br>
+                    + return parse(data)
+                  </div>
+                  <div class="text-slate-400 text-[10px] pt-2">
+                    <i class="fa-solid fa-circle-info text-cyan-400 mr-1"></i> AST Detection: <span class="text-slate-300">File descriptor leak resolved via context manager.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: BlogNest -->
+          <div class="bg-gradient-to-br from-slate-900/90 to-slate-900/40 border border-slate-800 hover:border-teal-500/40 rounded-3xl p-6 sm:p-8 lg:p-10 transition-all shadow-xl hover:shadow-teal-950/30">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div class="lg:col-span-7 space-y-4">
+                <div class="flex flex-wrap items-center gap-2.5">
+                  <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-teal-950/80 text-teal-300 border border-teal-800/50">
+                    <i class="fa-solid fa-globe mr-1"></i> Full-Stack MERN
+                  </span>
+                  <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-slate-800 text-slate-300 border border-slate-700">
+                    Cognifyz Internship Project
+                  </span>
+                  <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-cyan-950/80 text-cyan-300 border border-cyan-800/50">
+                    JWT Authentication
+                  </span>
+                </div>
+
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-white">
+                  BlogNest &ndash; Full-Stack Modern Blogging Platform
+                </h3>
+
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                  Developed during my Full Stack Development internship at <strong class="text-teal-300">Cognifyz Technologies</strong>. A production-grade publishing platform utilizing <strong class="text-white">MongoDB, Express.js, React.js, and Node.js</strong>.
+                </p>
+
+                <!-- Project Bullets -->
+                <ul class="space-y-2 text-sm text-slate-300">
+                  <li class="flex items-start gap-2.5">
+                    <i class="fa-solid fa-circle-check text-teal-400 text-sm mt-1 shrink-0"></i>
+                    <span><strong>Secure User Lifecycle:</strong> Implemented user registration, secure login, password hashing, and token-based authorization via <strong>JSON Web Tokens (JWT)</strong>.</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <i class="fa-solid fa-circle-check text-teal-400 text-sm mt-1 shrink-0"></i>
+                    <span><strong>Complete CRUD Pipeline:</strong> Enabled full content creation, rich markdown editing, tag-based categorization, viewing, and deletion of articles with robust backend validation.</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <i class="fa-solid fa-circle-check text-teal-400 text-sm mt-1 shrink-0"></i>
+                    <span><strong>High-Performance UI:</strong> Engineered responsive client views using React.js and CSS, integrated with optimized MongoDB aggregations for fast retrieval.</span>
+                  </li>
+                </ul>
+
+                <!-- Tech Tags -->
+                <div class="flex flex-wrap gap-2 pt-2">
+                  <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-xs text-slate-300 font-mono">React.js</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-xs text-slate-300 font-mono">Node.js</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-xs text-slate-300 font-mono">Express.js</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-xs text-slate-300 font-mono">MongoDB</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-xs text-slate-300 font-mono">JWT Auth</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-xs text-slate-300 font-mono">RESTful APIs</span>
+                </div>
+
+                <!-- Actions -->
+                <div class="flex items-center gap-4 pt-3">
+                  <a href="https://github.com/NaravaAswini" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-teal-600 hover:bg-teal-500 text-white shadow-md shadow-teal-600/20 flex items-center gap-2 transition-all">
+                    <i class="fa-brands fa-github"></i> View Repository
+                  </a>
+                </div>
+              </div>
+
+              <!-- Visual Representation -->
+              <div class="lg:col-span-5 bg-slate-950/80 border border-slate-800 rounded-2xl p-5">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-800 text-xs text-slate-400 font-mono">
+                  <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-teal-400"></span> BlogNest Architecture</span>
+                  <span class="text-teal-400">MERN Stack</span>
+                </div>
+                <div class="mt-4 space-y-2.5 text-xs">
+                  <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 flex items-center justify-between">
+                    <span class="text-slate-300 font-medium"><i class="fa-solid fa-shield-halved text-teal-400 mr-2"></i> Auth Guard</span>
+                    <span class="text-teal-300 font-mono text-[11px]">JWT Bearer Tokens</span>
+                  </div>
+                  <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 flex items-center justify-between">
+                    <span class="text-slate-300 font-medium"><i class="fa-solid fa-arrows-split-up-and-left text-cyan-400 mr-2"></i> RESTful Routes</span>
+                    <span class="text-cyan-300 font-mono text-[11px]">/api/v1/posts, /users</span>
+                  </div>
+                  <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 flex items-center justify-between">
+                    <span class="text-slate-300 font-medium"><i class="fa-solid fa-database text-emerald-400 mr-2"></i> MongoDB Store</span>
+                    <span class="text-emerald-300 font-mono text-[11px]">Mongoose Schemas</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive AI Lab / Live Playground Section -->
+    <section id="playground" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-950/60 border-t border-slate-800/80">
+      <div class="max-w-6xl mx-auto">
+        <!-- Section Header -->
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <div class="inline-flex items-center gap-2 text-cyan-400 font-mono text-sm tracking-wider uppercase mb-2">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Live Interactive Demos
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Experience My Projects Live</h2>
+          <p class="text-slate-400 text-sm mt-3">Test the algorithms behind ResumeIQ and the GenAI Code Reviewer right here!</p>
+          <div class="w-16 h-1 bg-gradient-to-r from-cyan-500 to-indigo-500 mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <!-- Playground Tabs -->
+        <div class="flex items-center justify-center gap-3 mb-8">
+          <button id="tabDemoResume" onclick="switchLabTab('resume')" class="px-5 py-2.5 rounded-xl text-sm font-semibold transition-all bg-cyan-500 text-white shadow-lg shadow-cyan-500/25 flex items-center gap-2">
+            <i class="fa-solid fa-file-invoice"></i> ResumeIQ ATS Matcher
+          </button>
+          <button id="tabDemoCode" onclick="switchLabTab('code')" class="px-5 py-2.5 rounded-xl text-sm font-semibold transition-all bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800 flex items-center gap-2">
+            <i class="fa-solid fa-code-compare"></i> AI Code Review & AST Fixer
+          </button>
+        </div>
+
+        <!-- Playground 1: ResumeIQ Simulator -->
+        <div id="demoResumeContainer" class="bg-slate-900/80 border border-cyan-500/30 rounded-3xl p-6 sm:p-8 backdrop-blur shadow-2xl">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-800 gap-2 mb-6">
+            <div>
+              <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-bolt text-cyan-400"></i> ResumeIQ Job-Fit Algorithm Simulator
+              </h3>
+              <p class="text-xs text-slate-400">Calculates TF-IDF vector overlap, ATS compliance, and skill coverage</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-xs text-slate-400 font-mono">Sample Job Descriptions:</span>
+              <button onclick="loadSampleJob('ai')" class="text-xs px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-cyan-300 font-medium">GenAI Engineer</button>
+              <button onclick="loadSampleJob('fullstack')" class="text-xs px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-indigo-300 font-medium">Full-Stack Dev</button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <!-- Left: Inputs -->
+            <div class="lg:col-span-7 space-y-4">
+              <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
+                  Target Job Description & Skills Required:
+                </label>
+                <textarea id="jobDescInput" rows="5" class="w-full bg-slate-950/90 border border-slate-700 rounded-xl p-3 text-xs sm:text-sm text-slate-200 focus:outline-none focus:border-cyan-400 font-mono leading-relaxed" placeholder="Paste or type job requirements (e.g., Python, FastAPI, React, LLMs, Docker, MongoDB, SQL)..."></textarea>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
+                  Candidate Profile Under Test:
+                </label>
+                <div class="p-3 bg-slate-950/60 border border-slate-800 rounded-xl text-xs text-slate-300 font-mono space-y-1">
+                  <div class="text-cyan-300 font-bold">Narava Aswini (Resume Profile Loaded)</div>
+                  <div>Skills: Python, Java, FastAPI, Flask, React.js, Node.js, Express, MongoDB, SQLite, LLMs, RAG, DeepSeek-Coder, AST, Azure, TF-IDF.</div>
+                </div>
+              </div>
+
+              <button onclick="simulateResumeMatch()" class="w-full py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 font-bold text-sm text-white shadow-lg shadow-cyan-500/25 flex items-center justify-center gap-2 transition-all">
+                <i class="fa-solid fa-calculator"></i> Compute Job-Fit Score & ATS Audit
+              </button>
+            </div>
+
+            <!-- Right: Results Panel -->
+            <div class="lg:col-span-5 bg-slate-950 border border-slate-800/90 rounded-2xl p-5 flex flex-col justify-between">
+              <div>
+                <div class="text-xs font-mono uppercase tracking-wider text-slate-400 mb-3 flex items-center justify-between">
+                  <span>Audit Results</span>
+                  <span id="scoreBadge" class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-800/40">Ready</span>
+                </div>
+
+                <div class="flex items-center justify-center my-4">
+                  <div class="relative w-36 h-36 flex items-center justify-center">
+                    <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                      <circle cx="50" cy="50" r="42" stroke="currentColor" stroke-width="8" class="text-slate-800 fill-none" />
+                      <circle id="scoreCircle" cx="50" cy="50" r="42" stroke="currentColor" stroke-width="8" class="text-cyan-400 fill-none stroke-round transition-all duration-1000" stroke-dasharray="264" stroke-dashoffset="30" />
+                    </svg>
+                    <div class="absolute flex flex-col items-center">
+                      <span id="scoreNumber" class="text-3xl font-extrabold text-white">94</span>
+                      <span class="text-[10px] uppercase tracking-wider text-slate-400 font-mono">Job-Fit / 100</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="space-y-3 text-xs">
+                  <div>
+                    <div class="text-slate-400 font-medium mb-1">Keywords Extracted & Matched:</div>
+                    <div id="matchedKeywordsContainer" class="flex flex-wrap gap-1.5">
+                      <span class="px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-800/50 text-[11px]">Python</span>
+                      <span class="px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-800/50 text-[11px]">FastAPI</span>
+                      <span class="px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-800/50 text-[11px]">React.js</span>
+                      <span class="px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-800/50 text-[11px]">LLMs</span>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div class="text-slate-400 font-medium mb-1">ATS Recommendation:</div>
+                    <p id="atsSummaryText" class="text-slate-300 bg-slate-900 p-2.5 rounded-lg border border-slate-800 text-[11px] leading-relaxed">
+                      Strong synergy with target role requirements. Candidate ranks in top 5% of candidate batch.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="text-[10px] text-slate-500 font-mono pt-3 border-t border-slate-800 text-center">
+                Powered by TF-IDF vectorization logic from ResumeIQ
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Playground 2: AI Code Review Simulator -->
+        <div id="demoCodeContainer" class="hidden bg-slate-900/80 border border-indigo-500/30 rounded-3xl p-6 sm:p-8 backdrop-blur shadow-2xl">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-800 gap-2 mb-6">
+            <div>
+              <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-code text-indigo-400"></i> Multi-LLM Code Review & Bug Fixer
+              </h3>
+              <p class="text-xs text-slate-400">AST syntax parser + DeepSeek-Coder patch generation</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-xs text-slate-400 font-mono">Preset Snippets:</span>
+              <button onclick="loadCodeSnippet('resource_leak')" class="text-xs px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-cyan-300 font-medium">Unclosed Resource</button>
+              <button onclick="loadCodeSnippet('sql_injection')" class="text-xs px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-indigo-300 font-medium">SQL Injection Risk</button>
+              <button onclick="loadCodeSnippet('mutable_default')" class="text-xs px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-purple-300 font-medium">Mutable Default Arg</button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <!-- Left: Code Input -->
+            <div class="lg:col-span-6 space-y-3">
+              <div class="flex items-center justify-between">
+                <label class="text-xs font-semibold uppercase tracking-wider text-slate-300">
+                  Target Python Code (Input):
+                </label>
+                <span class="text-[11px] font-mono text-slate-400">AST Parser Ready</span>
+              </div>
+              <textarea id="codeInput" rows="10" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs font-mono text-cyan-200 focus:outline-none focus:border-indigo-400 leading-relaxed"></textarea>
+              
+              <div class="flex items-center gap-3">
+                <button onclick="simulateCodeReview()" class="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 font-bold text-sm text-white shadow-lg shadow-indigo-600/25 flex items-center justify-center gap-2 transition-all">
+                  <i class="fa-solid fa-wand-magic-sparkles"></i> Review with DeepSeek-Coder & AST
+                </button>
+              </div>
+            </div>
+
+            <!-- Right: Code Review Output -->
+            <div class="lg:col-span-6 bg-slate-950 border border-slate-800 rounded-2xl p-4 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between pb-2 border-b border-slate-800 text-xs font-mono">
+                  <span class="text-emerald-400 font-semibold" id="astStatus">AST Analysis Passed</span>
+                  <span class="text-slate-400" id="modelSelected">DeepSeek-Coder-V2</span>
+                </div>
+
+                <div class="mt-3">
+                  <div class="text-xs font-semibold text-slate-300 mb-1 flex items-center gap-1.5">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-400"></i> Issues Detected:
+                  </div>
+                  <div id="detectedIssues" class="text-xs text-amber-300/90 bg-amber-950/20 border border-amber-800/30 p-2.5 rounded-lg mb-3">
+                    Analyzing AST tree...
+                  </div>
+                </div>
+
+                <div>
+                  <div class="text-xs font-semibold text-slate-300 mb-1 flex items-center gap-1.5">
+                    <i class="fa-solid fa-circle-check text-emerald-400"></i> Recommended Patch & Fix:
+                  </div>
+                  <pre id="codePatchOutput" class="p-3 bg-slate-900 border border-slate-800 rounded-xl text-xs font-mono text-emerald-300 overflow-x-auto max-h-48"></pre>
+                </div>
+              </div>
+
+              <div class="text-[10px] text-slate-500 font-mono pt-3 border-t border-slate-800 text-center">
+                Multi-model benchmark logic based on Aswini's GenAI Code Review project
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Work Experience Section -->
+    <section id="experience" class="py-20 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-6xl mx-auto">
+        <!-- Section Header -->
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 text-cyan-400 font-mono text-sm tracking-wider uppercase mb-2">
+            <i class="fa-solid fa-briefcase"></i> Real-World Experience
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Work Experience</h2>
+          <div class="w-16 h-1 bg-gradient-to-r from-cyan-500 to-indigo-500 mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <div class="relative pl-6 sm:pl-10 before:absolute before:left-3 sm:before:left-5 before:top-2 before:bottom-2 before:w-0.5 before:bg-gradient-to-b before:from-cyan-500 before:via-indigo-500 before:to-transparent">
+          <!-- Cognifyz Technologies Experience Card -->
+          <div class="relative bg-slate-900/60 border border-slate-800 hover:border-cyan-500/40 rounded-3xl p-6 sm:p-8 transition-all shadow-xl">
+            <!-- Node Pin -->
+            <div class="absolute -left-[31px] sm:-left-[47px] top-7 w-6 h-6 rounded-full bg-cyan-500 border-4 border-[#0b0f19] flex items-center justify-center">
+              <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+              <div>
+                <span class="text-xs font-mono px-3 py-1 rounded-full bg-cyan-950/80 text-cyan-300 border border-cyan-800/40">Internship</span>
+                <h3 class="text-xl sm:text-2xl font-bold text-white mt-2">Full Stack Development Intern</h3>
+                <div class="text-sm font-semibold text-cyan-400">Cognifyz Technologies</div>
+              </div>
+              <div class="text-xs font-mono text-slate-400 sm:text-right bg-slate-950/60 px-3 py-1.5 rounded-lg border border-slate-800">
+                <i class="fa-regular fa-calendar mr-1"></i> March 2025 &ndash; May 2025
+              </div>
+            </div>
+
+            <div class="space-y-3 text-sm text-slate-300 mt-4 leading-relaxed">
+              <p>
+                Gained rigorous hands-on experience in full-stack web engineering, architecting high-traffic components using <strong class="text-white">React.js, Node.js, Express.js, and MongoDB</strong>.
+              </p>
+              <ul class="space-y-2 text-slate-300 pl-2">
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-chevron-right text-cyan-400 text-xs mt-1.5 shrink-0"></i>
+                  <span>Developed and integrated robust <strong>RESTful APIs</strong> to seamlessly bridge frontend user interfaces with microservices and backend database models.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-chevron-right text-cyan-400 text-xs mt-1.5 shrink-0"></i>
+                  <span>Spearheaded development of <strong>BlogNest</strong>, an end-to-end publishing platform with user registration, secure session authentication, and role authorization via <strong>JWT (JSON Web Tokens)</strong>.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-chevron-right text-cyan-400 text-xs mt-1.5 shrink-0"></i>
+                  <span>Engineered responsive, accessible client interfaces in React and CSS, alongside MongoDB query optimizations for rapid data retrieval and CRUD manipulation.</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Skills Utilized Badges -->
+            <div class="flex flex-wrap gap-2 mt-6 pt-5 border-t border-slate-800">
+              <span class="px-2.5 py-1 rounded-lg bg-slate-950 text-xs text-slate-300 font-mono">React.js</span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-950 text-xs text-slate-300 font-mono">Node.js</span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-950 text-xs text-slate-300 font-mono">Express.js</span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-950 text-xs text-slate-300 font-mono">MongoDB</span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-950 text-xs text-slate-300 font-mono">JWT Auth</span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-950 text-xs text-slate-300 font-mono">RESTful APIs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Professional Certifications Section -->
+    <section id="certifications" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-950/40 border-t border-slate-800/60">
+      <div class="max-w-7xl mx-auto">
+        <!-- Section Header -->
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 text-cyan-400 font-mono text-sm tracking-wider uppercase mb-2">
+            <i class="fa-solid fa-certificate"></i> Verified Knowledge
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Certifications & Credentials</h2>
+          <p class="text-slate-400 text-sm mt-3">Industry-recognized credentials in Generative AI, Cloud Data, and Full Stack</p>
+          <div class="w-16 h-1 bg-gradient-to-r from-cyan-500 to-indigo-500 mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+          <!-- Cert 1: Oracle OCI GenAI 2025 -->
+          <div class="bg-gradient-to-b from-slate-900/90 to-slate-900/40 border border-slate-800 hover:border-amber-500/50 rounded-3xl p-6 sm:p-7 transition-all flex flex-col justify-between group hover:-translate-y-1 shadow-lg">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 rounded-2xl bg-amber-500/15 text-amber-400 flex items-center justify-center text-xl border border-amber-500/30">
+                  <i class="fa-solid fa-award"></i>
+                </div>
+                <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-amber-950/60 text-amber-300 border border-amber-800/40 font-semibold">2025 Certified</span>
+              </div>
+              <div class="text-xs text-amber-400 font-semibold uppercase tracking-wider mb-1">Oracle Cloud Infrastructure</div>
+              <h3 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors">
+                OCI 2025 Certified Generative AI Professional
+              </h3>
+              <p class="text-xs text-slate-400 mt-3 leading-relaxed">
+                Comprehensive certification validating skills in LLMs, prompt engineering, fine-tuning methodologies, RAG architectures, and enterprise AI deployment on Oracle Cloud Infrastructure.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono text-slate-400">
+              <span>Oracle University</span>
+              <span class="text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check"></i> Verified</span>
+            </div>
+          </div>
+
+          <!-- Cert 2: Microsoft Certified: Azure Data Fundamentals -->
+          <div class="bg-gradient-to-b from-slate-900/90 to-slate-900/40 border border-slate-800 hover:border-cyan-500/50 rounded-3xl p-6 sm:p-7 transition-all flex flex-col justify-between group hover:-translate-y-1 shadow-lg">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 rounded-2xl bg-cyan-500/15 text-cyan-400 flex items-center justify-center text-xl border border-cyan-500/30">
+                  <i class="fa-solid fa-cloud"></i>
+                </div>
+                <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-cyan-950/60 text-cyan-300 border border-cyan-800/40 font-semibold">Microsoft</span>
+              </div>
+              <div class="text-xs text-cyan-400 font-semibold uppercase tracking-wider mb-1">Microsoft Azure</div>
+              <h3 class="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors">
+                Microsoft Certified: Azure Data Fundamentals
+              </h3>
+              <p class="text-xs text-slate-400 mt-3 leading-relaxed">
+                Demonstrated core knowledge of cloud data concepts, relational and non-relational database services in Microsoft Azure, big data analytics workloads, and modern data architecture.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono text-slate-400">
+              <span>Microsoft</span>
+              <span class="text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check"></i> Verified</span>
+            </div>
+          </div>
+
+          <!-- Cert 3: Python Full Stack Development (PFS) -->
+          <div class="bg-gradient-to-b from-slate-900/90 to-slate-900/40 border border-slate-800 hover:border-indigo-500/50 rounded-3xl p-6 sm:p-7 transition-all flex flex-col justify-between group hover:-translate-y-1 shadow-lg">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 rounded-2xl bg-indigo-500/15 text-indigo-400 flex items-center justify-center text-xl border border-indigo-500/30">
+                  <i class="fa-brands fa-python"></i>
+                </div>
+                <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-indigo-950/60 text-indigo-300 border border-indigo-800/40 font-semibold">October 2026</span>
+              </div>
+              <div class="text-xs text-indigo-400 font-semibold uppercase tracking-wider mb-1">Codegnan IT Solutions</div>
+              <h3 class="text-lg font-bold text-white group-hover:text-indigo-300 transition-colors">
+                Python Full Stack Development (PFS)
+              </h3>
+              <p class="text-xs text-slate-400 mt-3 leading-relaxed">
+                In-depth full stack program covering core Python, object-oriented design, web application development with Flask/Django/FastAPI, frontend technologies, database querying, and deployment pipelines.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono text-slate-400">
+              <span>Codegnan Solutions</span>
+              <span class="text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check"></i> Completed</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & Connect Section -->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-800/60">
+      <div class="max-w-6xl mx-auto">
+        <!-- Section Header -->
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 text-cyan-400 font-mono text-sm tracking-wider uppercase mb-2">
+            <i class="fa-solid fa-paper-plane"></i> Let's Collaborate
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Get In Touch</h2>
+          <p class="text-slate-400 text-sm mt-3">Whether you have a job opening, a project idea, or just want to discuss GenAI architectures &mdash; I'm just a click away!</p>
+          <div class="w-16 h-1 bg-gradient-to-r from-cyan-500 to-indigo-500 mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <!-- Left: Direct Channels -->
+          <div class="lg:col-span-5 space-y-4">
+            
+            <!-- Email Card -->
+            <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 flex items-center justify-between hover:border-cyan-500/40 transition-all">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-lg shrink-0">
+                  <i class="fa-regular fa-envelope"></i>
+                </div>
+                <div>
+                  <div class="text-xs text-slate-400">Email Address</div>
+                  <a href="mailto:aswininarava@gmail.com" class="text-sm font-semibold text-white hover:text-cyan-400 transition-colors">
+                    aswininarava@gmail.com
+                  </a>
+                </div>
+              </div>
+              <button onclick="copyToClipboard('aswininarava@gmail.com', 'Email copied!')" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white" title="Copy Email">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+
+            <!-- Phone Card -->
+            <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 flex items-center justify-between hover:border-cyan-500/40 transition-all">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-lg shrink-0">
+                  <i class="fa-solid fa-phone"></i>
+                </div>
+                <div>
+                  <div class="text-xs text-slate-400">Phone & WhatsApp</div>
+                  <a href="tel:+918106059184" class="text-sm font-semibold text-white hover:text-indigo-400 transition-colors">
+                    +91 8106059184
+                  </a>
+                </div>
+              </div>
+              <button onclick="copyToClipboard('+918106059184', 'Phone number copied!')" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white" title="Copy Phone Number">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+
+            <!-- LinkedIn Card -->
+            <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 flex items-center justify-between hover:border-cyan-500/40 transition-all">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-[#0077b5]/15 text-[#0077b5] flex items-center justify-center text-lg shrink-0">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </div>
+                <div>
+                  <div class="text-xs text-slate-400">LinkedIn Profile</div>
+                  <a href="https://linkedin.com/in/aswininarava003" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-white hover:text-cyan-400 transition-colors">
+                    in/aswininarava003
+                  </a>
+                </div>
+              </div>
+              <a href="https://linkedin.com/in/aswininarava003" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+
+            <!-- GitHub Card -->
+            <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 flex items-center justify-between hover:border-cyan-500/40 transition-all">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-slate-800 text-slate-200 flex items-center justify-center text-lg shrink-0">
+                  <i class="fa-brands fa-github"></i>
+                </div>
+                <div>
+                  <div class="text-xs text-slate-400">GitHub Repositories</div>
+                  <a href="https://github.com/NaravaAswini" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-white hover:text-cyan-400 transition-colors">
+                    github.com/NaravaAswini
+                  </a>
+                </div>
+              </div>
+              <a href="https://github.com/NaravaAswini" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+
+            <!-- Download Resume Banner -->
+            <div class="bg-gradient-to-r from-cyan-950/60 to-indigo-950/60 border border-cyan-500/30 rounded-2xl p-5 text-center">
+              <div class="text-sm font-bold text-white mb-1">Looking for my full ATS-friendly resume?</div>
+              <p class="text-xs text-slate-400 mb-4">View my complete verified academic and technical background</p>
+              <a href="resume.html" target="_blank" class="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-cyan-300 border border-cyan-500/40 font-semibold text-xs inline-flex items-center justify-center gap-2 transition-all">
+                <i class="fa-solid fa-file-pdf text-red-400"></i> Open Printable Resume
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Right: Interactive Message Form -->
+          <div class="lg:col-span-7 bg-slate-900/60 border border-slate-800 rounded-3xl p-6 sm:p-8 backdrop-blur">
+            <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
+              <i class="fa-solid fa-envelope-open-text text-cyan-400"></i> Send Me a Message
+            </h3>
+            <p class="text-xs text-slate-400 mb-6">Fill in your message and it will instantly prepare a direct email to aswininarava@gmail.com.</p>
+
+            <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold text-slate-300 mb-1.5">Your Name *</label>
+                  <input type="text" id="contactName" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-400 transition-colors" placeholder="e.g. John Doe">
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-300 mb-1.5">Your Email *</label>
+                  <input type="email" id="contactEmail" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-400 transition-colors" placeholder="e.g. john@company.com">
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1.5">Subject *</label>
+                <input type="text" id="contactSubject" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-400 transition-colors" placeholder="e.g. Opportunity: Software Engineer / GenAI role">
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1.5">Message Content *</label>
+                <textarea id="contactMessage" rows="5" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-400 transition-colors" placeholder="Tell me about your team, project requirements, or question..."></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold text-sm shadow-lg shadow-cyan-500/25 flex items-center justify-center gap-2 transition-all">
+                <i class="fa-solid fa-paper-plane"></i> Send Direct Inquiry
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 bg-slate-950 py-10 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center font-mono font-bold text-sm text-white">
+          NA
+        </div>
+        <span class="text-sm text-slate-400 font-medium">
+          &copy; 2026 Narava Aswini. Designed & Built for Software & AI Engineering.
+        </span>
+      </div>
+
+      <div class="flex items-center gap-6 text-sm text-slate-400">
+        <a href="#hero" class="hover:text-cyan-400 transition-colors">Back to top <i class="fa-solid fa-arrow-up text-xs ml-1"></i></a>
+        <a href="https://github.com/NaravaAswini" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition-colors">GitHub</a>
+        <a href="https://linkedin.com/in/aswininarava003" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition-colors">LinkedIn</a>
+        <a href="resume.html" target="_blank" class="hover:text-cyan-400 transition-colors">Resume</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
